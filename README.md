@@ -1,2 +1,3 @@
 # challenges
-Challenges solutions
+
+Js files for Challenges.
