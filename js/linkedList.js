@@ -57,7 +57,7 @@ class LinkedList {
             let it = 0;
  
             // iterate over the list to find
-            // the position to insert
+            // the index to insert
             while (it < index) {
                 it++;
                 prev = curr;
@@ -72,4 +72,60 @@ class LinkedList {
     }
   }
 
+  remove(index) {
+
+    // If linked list is empty
+    if (this.head == null)
+    return;
+     
+    // Store head node
+    let temp = this.head;
+     
+    // If head needs to be removed
+    if (index == 0)
+    {      
+        // Change head
+        this.head = temp.next;
+        return;
+    }
+     
+    // Find previous node of the node to be deleted
+    for(let i = 0; temp != null && i < index - 1; i++){
+        temp = temp.next;
+      }
+     
+    // If index is more than number of nodes
+    if (temp == null || temp.next == null){
+    return;
+    }
+     
+    // Node temp->next is the node to be deleted
+    // Store pointer to the next of node to be deleted
+    let next = temp.next.next;
+     
+    // Unlink the deleted node from list
+    temp.next = next;
+
+  }
+
+  print() {
+    let current = this.head;
+    let counter = 0;
+    while (counter < this.length){
+      console.log(current.value);
+      counter++;
+      current = current.next;
+    }
+  }
+
 }
+
+const newList = new LinkedList();
+
+newList.add(1);
+newList.add(5);
+newList.add(10);
+newList.addAt(0, 25);
+newList.remove(1);
+
+console.log(newList.print());
